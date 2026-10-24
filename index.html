@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GameZone — Your Online Gaming Portal</title>
+  <meta name="description" content="GameZone is your ultimate browser gaming portal. Play 16+ free games including Snake, 2048, Sudoku, Space Shooter, Breakout, and more — no download required." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Orbitron:wght@400;600;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header class="site-header" id="site-header">
+  <div class="header-inner">
+    <a href="#" class="logo" id="logo-home" aria-label="GameZone Home">
+      <span class="logo-icon">⚡</span>
+      <span class="logo-text">Game<span class="logo-accent">Zone</span></span>
+    </a>
+
+    <nav class="main-nav" id="main-nav" aria-label="Main navigation">
+      <ul>
+        <li><a href="#" class="nav-link active" data-section="home">Home</a></li>
+        <li><a href="#" class="nav-link" data-section="categories">Categories</a></li>
+        <li><a href="#" class="nav-link" data-section="new-games">New Games</a></li>
+        <li><a href="#" class="nav-link" data-section="popular">Popular</a></li>
+        <li><a href="#" class="nav-link" data-section="leaderboard">Leaderboard</a></li>
+        <li><a href="#" class="nav-link" data-section="about">About</a></li>
+      </ul>
+    </nav>
+
+    <div class="header-actions">
+      <div class="search-wrapper">
+        <input type="search" id="search-input" placeholder="Search games…" aria-label="Search games" autocomplete="off" />
+        <button class="search-btn" id="search-btn" aria-label="Search">🔍</button>
+        <div class="search-dropdown" id="search-dropdown" aria-live="polite"></div>
+      </div>
+      <button class="fav-toggle" id="fav-toggle-btn" title="My Favourites" aria-label="My Favourites">❤️ <span id="fav-count">0</span></button>
+    </div>
+
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- Mobile nav overlay -->
+<div class="mobile-nav-overlay" id="mobile-nav-overlay">
+  <button class="close-mobile-nav" id="close-mobile-nav" aria-label="Close menu">✕</button>
+  <nav aria-label="Mobile navigation">
+    <ul>
+      <li><a href="#" class="mobile-nav-link" data-section="home">🏠 Home</a></li>
+      <li><a href="#" class="mobile-nav-link" data-section="categories">🎮 Categories</a></li>
+      <li><a href="#" class="mobile-nav-link" data-section="new-games">🆕 New Games</a></li>
+      <li><a href="#" class="mobile-nav-link" data-section="popular">🔥 Popular</a></li>
+      <li><a href="#" class="mobile-nav-link" data-section="leaderboard">🏆 Leaderboard</a></li>
+      <li><a href="#" class="mobile-nav-link" data-section="about">ℹ️ About</a></li>
+    </ul>
+  </nav>
+</div>
+
+<!-- ===== MAIN CONTENT ===== -->
+<main id="main-content">
+
+  <!-- HOME VIEW -->
+  <section id="view-home" class="view active">
+
+    <!-- Hero Banner -->
+    <div class="hero" id="hero">
+      <div class="hero-bg-anim"></div>
+      <div class="hero-content">
+        <div class="hero-badge">🎮 Free Browser Games</div>
+        <h1 class="hero-title">Your Next Favorite<br /><span class="gradient-text">Game Starts Here</span></h1>
+        <p class="hero-sub">Discover 16+ hand-crafted games. No downloads, no logins — just pure fun.</p>
+        <div class="hero-actions">
+          <button class="btn-primary" id="hero-play-btn">▶ Play Featured Game</button>
+          <button class="btn-ghost" id="hero-browse-btn">Browse All Games</button>
+        </div>
+        <div class="hero-stats">
+          <div class="stat"><span class="stat-num">16+</span><span class="stat-label">Games</span></div>
+          <div class="stat"><span class="stat-num">6</span><span class="stat-label">Categories</span></div>
+          <div class="stat"><span class="stat-num">100%</span><span class="stat-label">Free</span></div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-game-preview" id="hero-game-preview">
+          <div class="preview-card" id="featured-preview-card">
+            <div class="preview-art" id="featured-art"></div>
+            <div class="preview-info">
+              <span class="preview-badge">⭐ Featured</span>
+              <h3 id="featured-title">Space Shooter</h3>
+              <p id="featured-desc">Blast through waves of alien enemies in this epic arcade shooter!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Category Chips -->
+    <div class="categories-strip" id="categories-strip">
+      <div class="categories-inner">
+        <button class="cat-chip active" data-cat="all">🎲 All Games</button>
+        <button class="cat-chip" data-cat="puzzle">🧩 Puzzle</button>
+        <button class="cat-chip" data-cat="brain">🧠 Brain Training</button>
+        <button class="cat-chip" data-cat="arcade">🕹️ Arcade</button>
+        <button class="cat-chip" data-cat="action">⚡ Action</button>
+        <button class="cat-chip" data-cat="classic">♟️ Classic</button>
+        <button class="cat-chip" data-cat="casual">🎯 Casual</button>
+      </div>
+      <div class="sort-controls">
+        <label for="sort-select" class="sr-only">Sort by</label>
+        <select id="sort-select">
+          <option value="default">Sort: Default</option>
+          <option value="name">Sort: Name A–Z</option>
+          <option value="popularity">Sort: Popularity</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Continue Playing -->
+    <section class="section" id="continue-section" style="display:none;">
+      <div class="section-header">
+        <h2 class="section-title">▶ Continue Playing</h2>
+      </div>
+      <div class="games-row" id="continue-grid"></div>
+    </section>
+
+    <!-- Main layout with sidebar -->
+    <div class="main-layout">
+      <div class="content-area">
+
+        <!-- Trending -->
+        <section class="section" id="trending-section">
+          <div class="section-header">
+            <h2 class="section-title">🔥 Trending Games</h2>
+            <a href="#" class="see-all" data-section="popular">See All</a>
+          </div>
+          <div class="games-grid" id="trending-grid"></div>
+        </section>
+
+        <!-- Popular -->
+        <section class="section" id="popular-section">
+          <div class="section-header">
+            <h2 class="section-title">⭐ Popular Games</h2>
+            <a href="#" class="see-all" data-section="popular">See All</a>
+          </div>
+          <div class="games-grid" id="popular-grid"></div>
+        </section>
+
+        <!-- New Releases -->
+        <section class="section" id="new-section">
+          <div class="section-header">
+            <h2 class="section-title">🆕 New Releases</h2>
+            <a href="#" class="see-all" data-section="new-games">See All</a>
+          </div>
+          <div class="games-grid" id="new-grid"></div>
+        </section>
+
+        <!-- Editor's Picks -->
+        <section class="section" id="picks-section">
+          <div class="section-header">
+            <h2 class="section-title">🏆 Editor's Picks</h2>
+          </div>
+          <div class="games-grid" id="picks-grid"></div>
+        </section>
+
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="sidebar" id="sidebar">
+        <!-- Leaderboard Widget -->
+        <div class="sidebar-widget" id="leaderboard-widget">
+          <h3 class="widget-title">🏆 Local Leaderboard</h3>
+          <p class="widget-note">Your personal best scores (demo data)</p>
+          <div id="sidebar-leaderboard"></div>
+        </div>
+
+        <!-- Favourites Widget -->
+        <div class="sidebar-widget" id="fav-widget">
+          <h3 class="widget-title">❤️ My Favourites</h3>
+          <div id="sidebar-fav-list"><p class="empty-state-sm">No favourites yet. Click ♡ on any game card.</p></div>
+        </div>
+
+        <!-- Ad Placeholder -->
+        <div class="sidebar-widget ad-placeholder">
+          <div class="ad-label">Advertisement</div>
+          <div class="ad-art">
+            <div class="ad-inner">
+              <span class="ad-icon">🎮</span>
+              <p class="ad-text">Love GameZone?<br/>Share with friends!</p>
+              <button class="btn-small" onclick="navigator.share ? navigator.share({title:'GameZone',url:location.href}) : alert('Copy the URL to share!')">Share ↗</button>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ALL GAMES VIEW (Categories / Search / Filter) -->
+  <section id="view-all-games" class="view">
+    <div class="view-header">
+      <h2 id="view-all-title">All Games</h2>
+      <div class="filter-bar">
+        <input type="search" id="filter-search" placeholder="Filter games…" aria-label="Filter games" />
+        <div class="filter-chips" id="filter-chips">
+          <button class="fchip active" data-cat="all">All</button>
+          <button class="fchip" data-cat="puzzle">🧩 Puzzle</button>
+          <button class="fchip" data-cat="brain">🧠 Brain</button>
+          <button class="fchip" data-cat="arcade">🕹️ Arcade</button>
+          <button class="fchip" data-cat="action">⚡ Action</button>
+          <button class="fchip" data-cat="classic">♟️ Classic</button>
+          <button class="fchip" data-cat="casual">🎯 Casual</button>
+        </div>
+        <select id="filter-sort">
+          <option value="default">Default</option>
+          <option value="name">Name A–Z</option>
+          <option value="popularity">Popularity</option>
+        </select>
+      </div>
+    </div>
+    <div class="games-grid large-grid" id="all-games-grid"></div>
+    <div class="empty-state" id="empty-state" style="display:none;">
+      <div class="empty-icon">🎮</div>
+      <h3>No games found</h3>
+      <p>Try a different search or category.</p>
+    </div>
+  </section>
+
+  <!-- LEADERBOARD VIEW -->
+  <section id="view-leaderboard" class="view">
+    <div class="view-header">
+      <h2>🏆 Local Leaderboard</h2>
+      <p class="view-note">⚠️ This is a local demo leaderboard stored in your browser. It is not connected to a global online ranking system.</p>
+    </div>
+    <div id="leaderboard-full"></div>
+  </section>
+
+  <!-- ABOUT VIEW -->
+  <section id="view-about" class="view">
+    <div class="view-header">
+      <h2>ℹ️ About GameZone</h2>
+    </div>
+    <div class="about-content">
+      <div class="about-card">
+        <h3>🎮 What is GameZone?</h3>
+        <p>GameZone is a free browser-based gaming portal featuring 16+ hand-crafted mini-games. Built for the CSE 3206 Web Engineering Lab, it showcases HTML5 Canvas, CSS3, and Vanilla JavaScript.</p>
+      </div>
+      <div class="about-card">
+        <h3>🔒 Privacy & Security</h3>
+        <p>GameZone stores only your game scores and preferences in your browser's localStorage. No personal data is collected, transmitted, or shared. All games run locally — no external servers are used.</p>
+        <p><strong>Note:</strong> Client-side validation demonstrated here does not replace server-side security in production applications.</p>
+      </div>
+      <div class="about-card">
+        <h3>📬 Contact</h3>
+        <form id="contact-form" novalidate>
+          <div class="form-group">
+            <label for="contact-name">Your Name</label>
+            <input type="text" id="contact-name" placeholder="Jane Doe" maxlength="80" />
+            <span class="field-error" id="name-error"></span>
+          </div>
+          <div class="form-group">
+            <label for="contact-email">Email Address</label>
+            <input type="email" id="contact-email" placeholder="jane@example.com" maxlength="120" />
+            <span class="field-error" id="email-error"></span>
+          </div>
+          <div class="form-group">
+            <label for="contact-msg">Message</label>
+            <textarea id="contact-msg" rows="4" placeholder="Your message here…" maxlength="500"></textarea>
+            <span class="field-error" id="msg-error"></span>
+          </div>
+          <button type="submit" class="btn-primary">Send Message</button>
+          <p class="form-success" id="form-success" style="display:none;">✅ Message received (demo only — no server).</p>
+        </form>
+      </div>
+      <div class="about-card">
+        <h3>📄 Legal</h3>
+        <p><strong>Privacy Policy:</strong> We do not collect personal information. localStorage is used only for game scores and preferences.</p>
+        <p><strong>Terms of Use:</strong> GameZone is provided for educational purposes. All games are original implementations.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- GAME VIEW (where games play) -->
+  <section id="view-game" class="view">
+    <div class="game-view-header">
+      <button class="back-btn" id="back-btn">← Back to Games</button>
+      <div class="game-meta">
+        <h2 id="game-view-title"></h2>
+        <span class="game-view-cat" id="game-view-cat"></span>
+      </div>
+      <div class="game-actions">
+        <button class="btn-small" id="game-restart-btn">🔄 Restart</button>
+        <button class="btn-small fav-btn" id="game-fav-btn" title="Add to favourites">♡ Favourite</button>
+      </div>
+    </div>
+    <div class="game-instructions" id="game-instructions"></div>
+    <div class="game-score-bar" id="game-score-bar">
+      <span class="score-item">Score: <strong id="current-score">0</strong></span>
+      <span class="score-item" id="extra-score-item" style="display:none;"></span>
+      <span class="score-item">Best: <strong id="best-score">0</strong></span>
+    </div>
+    <div class="game-container" id="game-container"></div>
+    <div class="game-overlay" id="game-overlay" style="display:none;">
+      <div class="overlay-box">
+        <div class="overlay-icon" id="overlay-icon">🎉</div>
+        <h2 id="overlay-title">Game Over</h2>
+        <p id="overlay-msg"></p>
+        <div class="overlay-btns">
+          <button class="btn-primary" id="overlay-restart">🔄 Play Again</button>
+          <button class="btn-ghost" id="overlay-back">← Browse Games</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="logo-icon">⚡</span>
+      <span class="logo-text">Game<span class="logo-accent">Zone</span></span>
+      <p>Free browser games — no download, no login.</p>
+    </div>
+    <div class="footer-links">
+      <div class="footer-col">
+        <h4>Games</h4>
+        <ul>
+          <li><a href="#" data-section="popular">Popular</a></li>
+          <li><a href="#" data-section="new-games">New Releases</a></li>
+          <li><a href="#" data-section="categories">Categories</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#" data-section="about">About Us</a></li>
+          <li><a href="#" data-section="about">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="#" data-section="about">Privacy Policy</a></li>
+          <li><a href="#" data-section="about">Terms of Use</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 GameZone · CSE 3206 Web Engineering Lab · Built with ❤️ and Vanilla JS</p>
+  </div>
+</footer>
+
+<script src="games/polyfill.js"></script>
+<script src="games/tictactoe.js"></script>
+<script src="games/memory.js"></script>
+<script src="games/game2048.js"></script>
+<script src="games/sudoku.js"></script>
+<script src="games/minesweeper.js"></script>
+<script src="games/wordguess.js"></script>
+<script src="games/simon.js"></script>
+<script src="games/sliding.js"></script>
+<script src="games/snake.js"></script>
+<script src="games/breakout.js"></script>
+<script src="games/flappy.js"></script>
+<script src="games/spaceshooter.js"></script>
+<script src="games/rps.js"></script>
+<script src="games/whackamole.js"></script>
+<script src="games/reactiontime.js"></script>
+<script src="games/numbermemory.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
